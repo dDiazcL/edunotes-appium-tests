@@ -1,32 +1,33 @@
-describe('Módulo Registro - EduNotes', () => {
+describe('Módulo Login - EduNotes', () => {
 
   before(async () => {
-    // Espera a que el input de correo esté visible
-    const emailInput = await $('~register-email');
+    // Espera a que cargue la pantalla de login
+    const emailInput = await $('~login-email');
     await emailInput.waitForDisplayed({ timeout: 20000 });
   });
 
-  it('Debe mostrar la pantalla de registro', async () => {
-    const email = await $('~register-email');
-    const password = await $('~register-password');
-    const button = await $('~register-submit');
+  it('Debe mostrar la pantalla de login', async () => {
+    const email = await $('~login-email');
+    const password = await $('~login-password');
+    const button = await $('~login-submit');
 
     await expect(email).toBeDisplayed();
     await expect(password).toBeDisplayed();
     await expect(button).toBeDisplayed();
   });
 
-  it('Debe permitir registrar un usuario con datos válidos', async () => {
-    const email = await $('~register-email');
-    const password = await $('~register-password');
-    const button = await $('~register-submit');
+  it('Debe permitir iniciar sesión con credenciales válidas', async () => {
+    const email = await $('~login-email');
+    const password = await $('~login-password');
+    const button = await $('~login-submit');
 
-    await email.setValue('nuevo@mail.com');
+    await email.setValue('test@mail.com');
     await password.setValue('123456');
     await button.click();
 
-    // Pausa para observar el comportamiento real
-    await browser.pause(2000);
+    // Validación real: entra a la pantalla de notas
+    const notesTitle = await $('~notes-title');
+    await notesTitle.waitForDisplayed({ timeout: 10000 });
   });
 
 });

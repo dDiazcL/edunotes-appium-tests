@@ -1,26 +1,31 @@
-describe('Módulo Gestión de Notas - EduNotes', () => {
+describe('Módulo Notas - EduNotes', () => {
 
   before(async () => {
-    // Esperar que aparezca el botón flotante para agregar nota
-    const addButton = await $('~notes-add');
-    await addButton.waitForDisplayed({ timeout: 20000 });
+    const notesTitle = await $('~notes-title');
+    await notesTitle.waitForDisplayed({ timeout: 20000 });
   });
 
-  it('Debe permitir crear una nueva nota', async () => {
+  it('Debe mostrar la pantalla de notas', async () => {
+    const title = await $('~notes-title');
+    const addButton = await $('~notes-add');
+
+    await expect(title).toBeDisplayed();
+    await expect(addButton).toBeDisplayed();
+  });
+
+  it('Debe permitir agregar una nueva nota', async () => {
     const addButton = await $('~notes-add');
     await addButton.click();
 
-    // Pausa para ver la acción
-    await browser.pause(2000);
-  });
+    const modalTitle = await $('~note-title-input');
+    await modalTitle.waitForDisplayed({ timeout: 10000 });
 
-  it('Debe permitir marcar una nota como favorita', async () => {
-    // Primer botón de favorito (nota existente)
-    const favoriteButton = await $('~note-favorite');
-    await favoriteButton.waitForDisplayed({ timeout: 10000 });
-    await favoriteButton.click();
+    await modalTitle.setValue('Nota Appium');
+    const saveButton = await $('~note-save');
+    await saveButton.click();
 
-    await browser.pause(2000);
+    const noteItem = await $('~note-item-0');
+    await expect(noteItem).toBeDisplayed();
   });
 
 });

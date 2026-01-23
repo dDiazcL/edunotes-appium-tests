@@ -1,7 +1,7 @@
 describe('Módulo Login - EduNotes', () => {
 
   before(async () => {
-    // Espera a que la app cargue el input de email
+    // Espera a que cargue la pantalla de login
     const emailInput = await $('~login-email');
     await emailInput.waitForDisplayed({ timeout: 20000 });
   });
@@ -16,7 +16,7 @@ describe('Módulo Login - EduNotes', () => {
     await expect(button).toBeDisplayed();
   });
 
-  it('Debe permitir ingresar credenciales válidas', async () => {
+  it('Debe permitir iniciar sesión con credenciales válidas', async () => {
     const email = await $('~login-email');
     const password = await $('~login-password');
     const button = await $('~login-submit');
@@ -25,8 +25,9 @@ describe('Módulo Login - EduNotes', () => {
     await password.setValue('123456');
     await button.click();
 
-    // Pequeña pausa para ver la acción en tiempo real
-    await browser.pause(2000);
+    // Validación real: entra a la pantalla de notas
+    const notesTitle = await $('~notes-title');
+    await notesTitle.waitForDisplayed({ timeout: 10000 });
   });
 
 });
