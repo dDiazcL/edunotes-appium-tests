@@ -21,7 +21,7 @@ describe('Módulo Login - EduNotes', () => {
     const password = await $('~login-password');
     const button = await $('~login-submit');
 
-    await email.setValue('test@mail.com');
+    await email.setValue('test@gmail.com');
     await password.setValue('123456');
     await button.click();
 
