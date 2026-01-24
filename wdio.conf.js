@@ -13,8 +13,8 @@ exports.config = {
 
     capabilities: [{
         platformName: 'Android',
-        'appium:deviceName': 'Android Emulator',
-        'appium:platformVersion': '13',
+        'appium:deviceName': 'Pixel 5',
+        'appium:platformVersion': '12',
         'appium:automationName': 'UiAutomator2',
         'appium:app': './apk/app-release.apk',
         'appium:autoGrantPermissions': true
