@@ -16,7 +16,8 @@ exports.config = {
         'appium:deviceName': 'Pixel 5',
         'appium:platformVersion': '12',
         'appium:automationName': 'UiAutomator2',
-        'appium:app': './apk/app-release.apk',
+        'appium:app': './apk/app-debug.apk',
+        'appium:fullReset': true,
         'appium:autoGrantPermissions': true
     }],
 
