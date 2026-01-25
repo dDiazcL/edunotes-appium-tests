@@ -6,7 +6,7 @@ exports.config = {
     path: '/',               // 🔑
 
     specs: [
-        './test/specs/**/*.js'
+        './test/tests/**/*.js'
     ],
 
     maxInstances: 1,
