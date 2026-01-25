@@ -6,7 +6,7 @@ exports.config = {
     path: '/',               // 🔑
 
     specs: [
-        './test/tests/**/*.js'
+        './test/pageobjects/tests/*.js'
     ],
 
     maxInstances: 1,
